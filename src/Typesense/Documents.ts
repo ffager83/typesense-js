@@ -339,6 +339,7 @@ export default class Documents<T extends DocumentSchema = object>
     if (Array.isArray(documents)) {
       const resultsInJSONFormat = resultsInJSONLFormat
         .split("\n")
+        .filter((r) => r !== '')
         .map((r) => JSON.parse(r)) as ImportResponse[];
       const failedItems = resultsInJSONFormat.filter(
         (r) => r.success === false
